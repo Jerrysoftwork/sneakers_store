@@ -1,7 +1,9 @@
-// Quantity controls
+// Quantity control
 const minus = document.getElementById('minus');
 const plus = document.getElementById('plus');
 const count = document.getElementById('count');
+const cartCount = document.getElementById('cart-count');
+const addToCartBtn = document.querySelector('.add-to-cart');
 
 let quantity = 0;
 
@@ -17,7 +19,7 @@ minus.addEventListener('click', () => {
   }
 });
 
-// Image thumbnail switching
+// Image switching
 const mainImage = document.getElementById('main-image');
 const thumbnails = document.querySelectorAll('.thumb');
 
@@ -29,15 +31,7 @@ thumbnails.forEach(thumb => {
   });
 });
 
-// Cart logic
-const addToCartBtn = document.querySelector('.add-to-cart');
-const cartCount = document.getElementById('cart-count');
-const cartIcon = document.getElementById('cart-icon');
-const cartDropdown = document.getElementById('cart-dropdown');
-const cartItems = document.getElementById('cart-items');
-
-let cart = [];
-
+// Add to cart and save to localStorage
 addToCartBtn.addEventListener('click', () => {
   if (quantity === 0) return;
 
@@ -48,39 +42,17 @@ addToCartBtn.addEventListener('click', () => {
     img: mainImage.src
   };
 
-  cart = [product]; // Replace cart with new item
-  updateCartDisplay();
+  localStorage.setItem('cart', JSON.stringify([product]));
+  cartCount.textContent = quantity;
 });
-
-function updateCartDisplay() {
-  if (cart.length === 0) {
-    cartItems.innerHTML = '<p class="empty">Your cart is empty.</p>';
+// Update cart count on page load
+window.addEventListener('load', () => {
+  const cart = JSON.parse(localStorage.getItem('cart'));
+  if (cart && cart.length > 0) {
+    const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+    cartCount.textContent = totalQuantity;
+  } else {
     cartCount.textContent = '0';
-    return;
   }
-
-  const item = cart[0];
-  cartCount.textContent = item.quantity;
-
-  cartItems.innerHTML = `
-    <div class="cart-item">
-      <img src="${item.img}" alt="Sneaker" />
-      <div class="cart-item-details">
-        <p>${item.name}</p>
-        <p>$${item.price} × ${item.quantity} = <strong>$${item.price * item.quantity}</strong></p>
-      </div>
-      <button class="cart-item-delete">✖</button>
-    </div>
-  `;
-
-  // Delete button
-  document.querySelector('.cart-item-delete').addEventListener('click', () => {
-    cart = [];
-    updateCartDisplay();
-  });
-}
-
-// Toggle cart dropdown on icon click
-cartIcon.addEventListener('click', () => {
-  cartDropdown.classList.toggle('hidden');
 });
+// Add images and update HTML and CSS for sneakers store project        
