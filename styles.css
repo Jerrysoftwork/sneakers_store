@@ -9,9 +9,10 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
   align-items: center;
+  padding: 20px 40px;
   border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -25,8 +26,38 @@ nav a {
   color: #333;
 }
 
+.profile-cart {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .profile-pic {
   width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.cart-container {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: orange;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
   border-radius: 50%;
 }
 
@@ -34,10 +65,11 @@ nav a {
   display: flex;
   padding: 40px;
   gap: 40px;
+  flex-wrap: wrap;
 }
 
 .image-section {
-  flex: 1;
+  flex: 1 1 300px;
 }
 
 .main-img {
@@ -65,7 +97,7 @@ nav a {
 }
 
 .info-section {
-  flex: 1;
+  flex: 1 1 300px;
 }
 
 .price {
@@ -85,6 +117,7 @@ nav a {
   color: #b45309;
   padding: 2px 6px;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 .price .old {
@@ -96,6 +129,7 @@ nav a {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-top: 20px;
 }
 
 .quantity {
@@ -110,13 +144,14 @@ nav a {
   background: #f3f4f6;
   padding: 10px 16px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .quantity span {
   padding: 10px 16px;
-  display: inline-block;
   min-width: 30px;
   text-align: center;
+  font-size: 16px;
 }
 
 .add-to-cart {
@@ -126,4 +161,51 @@ nav a {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #e0e0e0;
+  }
+
+  header {
+    border-bottom-color: #333;
+  }
+
+  nav a {
+    color: #e0e0e0;
+  }
+
+  .cart-count {
+    background: #ff9800;
+  }
+
+  .price .discount {
+    background-color: #ffb74d;
+    color: #f57c00;
+  }
+
+  .add-to-cart {
+    background: #ff5722;
+  }
 }
