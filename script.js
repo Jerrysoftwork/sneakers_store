@@ -1,4 +1,9 @@
-// Quantity control
+const navMen = document.getElementById('nav-men');
+const navCollections = document.getElementById('nav-collections');
+const collectionsSection = document.getElementById('collections-section');
+const productContainer = document.querySelector('.product-container');
+
+// Quantity controls
 const minus = document.getElementById('minus');
 const plus = document.getElementById('plus');
 const count = document.getElementById('count');
@@ -31,7 +36,7 @@ thumbnails.forEach(thumb => {
   });
 });
 
-// Add to cart and save to localStorage
+// Add to cart
 addToCartBtn.addEventListener('click', () => {
   if (quantity === 0) return;
 
@@ -45,14 +50,32 @@ addToCartBtn.addEventListener('click', () => {
   localStorage.setItem('cart', JSON.stringify([product]));
   cartCount.textContent = quantity;
 });
-// Update cart count on page load
-window.addEventListener('load', () => {
-  const cart = JSON.parse(localStorage.getItem('cart'));
-  if (cart && cart.length > 0) {
-    const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
-    cartCount.textContent = totalQuantity;
-  } else {
-    cartCount.textContent = '0';
-  }
+
+// Show men's shoes
+navMen.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  productContainer.classList.remove('hidden');
+  collectionsSection.classList.add('hidden');
+
+  mainImage.src = 'images/men1.jpeg';
+  thumbnails.forEach((thumb, index) => {
+    thumb.src = `images/men${index + 1}.jpeg`;
+  });
+
+  thumbnails.forEach(t => t.classList.remove('active'));
+  thumbnails[0].classList.add('active');
 });
-// Add images and update HTML and CSS for sneakers store project        
+
+// Show collections
+navCollections.addEventListener('click', (e) => {
+  e.preventDefault();
+  productContainer.classList.add('hidden');
+  collectionsSection.classList.remove('hidden');
+});
+
+// Back button handler
+function goBackToProduct() {
+  collectionsSection.classList.add('hidden');
+  productContainer.classList.remove('hidden');
+}
