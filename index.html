@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fall Limited Edition Sneakers</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">sneakers</div>
+    <nav>
+      <a href="#">Collections</a>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="profile-cart">
+      <img src="profile.jpg" alt="Profile" class="profile-pic" />
+    </div>
+  </header>
+
+  <main class="product-container">
+    <div class="image-section">
+      <img id="main-image" src="sneaker1.jpg" alt="Sneakers" class="main-img" />
+      <div class="thumbnails">
+        <img src="sneaker1.jpg" alt="" class="thumb active" />
+        <img src="sneaker2.jpg" alt="" class="thumb" />
+        <img src="sneaker3.jpg" alt="" class="thumb" />
+        <img src="sneaker4.jpg" alt="" class="thumb" />
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h4>SNEAKER COMPANY</h4>
+      <h1>Fall Limited Edition Sneakers</h1>
+      <p>
+        These low-profile sneakers are your perfect casual wear companion.
+        Featuring a durable rubber outer sole, they’ll withstand everything
+        the weather can offer.
+      </p>
+
+      <div class="price">
+        <span class="current">$125.00</span>
+        <span class="discount">50%</span>
+        <span class="old">$250.00</span>
+      </div>
+
+      <div class="quantity-cart">
+        <div class="quantity">
+          <button id="minus">-</button>
+          <span id="count">0</span>
+          <button id="plus">+</button>
+        </div>
+        <button class="add-to-cart">🛒 Add to cart</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
