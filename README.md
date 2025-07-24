@@ -3,7 +3,7 @@ A modern, responsive sneaker product page built with HTML, CSS, and Vanilla Java
 
 🔗 Live Preview
 Deployed via Vercel
-(Add your deployed link here after deployment)
+[Live Link](https://sneakersstore-mu.vercel.app/)
 
 🚀 Features
 🖼 Product gallery with image thumbnails
